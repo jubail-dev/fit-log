@@ -1,42 +1,59 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import NavLogo from "@/assets/logo.png";
 import Link from "next/link";
 
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className="shadow py-4 bg-[#1E1E1E]">
-      <nav className="container mx-auto ">
-        <div className=" flex justify-between items-center">
-          {/* Logo area */}
+      <nav className="container mx-auto px-4">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={toggleMenu}
+              className="md:hidden text-white focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
 
-          <div>
-            <Link href="" className="flex gap-4 justify-center items-center">
+            <Link href="/" className="flex gap-4 justify-center items-center">
               <Image
                 src={NavLogo}
                 alt="Nav Logo"
                 width={40}
                 height={40}
-              ></Image>
+              />
               <h3 className="font-bold text-2xl text-white">FITLOG</h3>
             </Link>
           </div>
 
-          {/* Nav Links Area */}
-
-          <div>
+          <div className="hidden md:flex">
             <ul className="flex gap-6 justify-center items-center text-xl text-[#9CA3AF]">
               <li>
-                <Link href="work-outs">Workouts</Link>
+                <Link href="/">Workouts</Link>
               </li>
-
               <li>
-                <Link href="my-plan">MY Plan</Link>
+                <Link href="/my-plan">MY Plan</Link>
               </li>
             </ul>
           </div>
-
-          {/* Right side baghes */}
 
           <div className="flex gap-4 justify-center items-center text-[#D1D5DB] text-xl">
             <Link
@@ -58,6 +75,29 @@ const Nav = () => {
             </Link>
           </div>
         </div>
+
+        {isOpen && (
+          <div className="md:hidden mt-4 pt-4 border-t border-gray-800">
+            <ul className="flex flex-col gap-4 text-xl text-[#9CA3AF]">
+              <li>
+                <Link
+                  href="/"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Workouts
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/my-plan"
+                  onClick={() => setIsOpen(false)}
+                >
+                  MY Plan
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
   );
