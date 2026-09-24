@@ -27,7 +27,7 @@ const Banner = () => {
             </p>
 
             <div className="pt-2">
-              <a href="#">
+              <a href="#Library">
                 <button className="inline-block py-3 px-6 sm:px-8 rounded-2xl bg-[#C2F800] font-semibold text-black hover:bg-[#b5e900] transition">
                   BROWSE WORKOUTS
                 </button>

@@ -9,6 +9,7 @@ const WorkOutCard = ({ workOut }: { workOut: WorkOutType }) => {
     <Link
       href={`/exercise/${workOut.id}`}
       className="group block w-full"
+      id="Library"
     >
       <div className="w-full overflow-hidden rounded-2xl border border-white/10 bg-[#121417] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#C2F800]/40 hover:shadow-2xl">
 
