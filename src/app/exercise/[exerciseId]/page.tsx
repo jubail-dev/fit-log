@@ -1,3 +1,5 @@
+import SaveLaterButton from "@/app/components/workOutDetails/SaveLaterButton";
+import TodayPlanButton from "@/app/components/workOutDetails/TodayPlanButton";
 import { getWorkOuts } from "@/lib/workOuts";
 import { WorkOutType } from "@/types/workOut";
 import Image from "next/image";
@@ -276,41 +278,9 @@ const ExerciseDetailPage = async ({
                 pb-4
               "
             >
-              <button
-                className="
-                  w-full
-                  sm:w-auto
-                  bg-[#C2F800]
-                  text-black
-                  font-semibold
-                  px-6
-                  py-3
-                  rounded-full
-                  hover:bg-[#b4e800]
-                  transition
-                "
-              >
-                Add to today&apos;s plan
-              </button>
+              <TodayPlanButton workOut ={workOut}></TodayPlanButton>
 
-              <button
-                className="
-                  w-full
-                  sm:w-auto
-                  border
-                  border-gray-500
-                  text-white
-                  font-semibold
-                  px-6
-                  py-3
-                  rounded-full
-                  hover:bg-white
-                  hover:text-black
-                  transition
-                "
-              >
-                Save for later
-              </button>
+              <SaveLaterButton workOut ={workOut}></SaveLaterButton>
             </div>
 
           </div>

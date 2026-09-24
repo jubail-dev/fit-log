@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Oswald } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/shared/Nav";
+import WorkOutProvider from "@/context/WorkOutProvider";
 
 // Font configurations
 const geistSans = Geist({
@@ -36,8 +37,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} h-full antialiased`}
     >
       <body className={`${oswald.className} min-h-full flex flex-col`}>
-        <Nav />
-        {children}
+
+          <WorkOutProvider>
+
+            <Nav />
+           {children}
+           
+          </WorkOutProvider>
+
+
       </body>
     </html>
   );
