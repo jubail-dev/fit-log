@@ -4,6 +4,9 @@ import React from "react";
 import { FiCheck, FiClock, FiStar, FiX } from "react-icons/fi";
 import { IoFlameOutline } from "react-icons/io5";
 import { WorkOutType } from "@/types/workOut";
+import Link from "next/link";
+import RemoveButton from "./RemoveButton";
+import MarkAsButton from "./MarkAsButton";
 
 interface TodayPlanCardProps {
   workOut: WorkOutType;
@@ -16,6 +19,8 @@ const TodayPlanCard = ({
   workOut,
   
 }: TodayPlanCardProps) => {
+
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#14161d] text-white p-5 rounded-2xl border border-gray-800 hover:border-[#c2f800]/30 transition duration-300">
 
@@ -63,28 +68,21 @@ const TodayPlanCard = ({
 
       <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
 
-        <button
+        <Link href={`/exercise/${workOut.id}`}>
+
+            <button
           
           className="px-5 py-2.5 text-sm font-semibold text-white border border-gray-600 rounded-full hover:bg-gray-800 transition"
         >
           View Details
         </button>
+        
+        </Link>
 
-        <button
-         
-          className="px-5 py-2.5 text-sm font-bold text-black bg-[#c2f800] hover:bg-[#b5e900] rounded-full flex items-center gap-2 transition"
-        >
-          <FiCheck className="w-4 h-4" />
-          Mark as Done
-        </button>
 
-        <button
-          
-          className="p-2 text-gray-400 hover:text-red-400 transition"
-          aria-label="Remove workout"
-        >
-          <FiX className="w-5 h-5" />
-        </button>
+        <MarkAsButton workOut ={workOut}></MarkAsButton>
+
+        <RemoveButton workOut ={workOut}></RemoveButton>
 
       </div>
     </div>
