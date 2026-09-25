@@ -1,11 +1,13 @@
 "use client"
 
+import { WorkOutContext } from '@/context/WorkOutProvider';
 import { WorkOutType } from '@/types/workOut';
-import React from 'react';
+import React, { useContext } from 'react';
 
 const TodayPlanButton = ({ workOut }: { workOut: WorkOutType }) => {
+    const {todayPlan, setTodayPlan} = useContext(WorkOutContext)
     const handleTodayPlanButton = () => {
-        console.log("HanleTodayButton Clicked", workOut);
+        setTodayPlan([...todayPlan,workOut])
     }
     return (
         <button

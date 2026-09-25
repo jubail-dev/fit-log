@@ -1,12 +1,14 @@
 "use client"
 
+import { WorkOutContext } from '@/context/WorkOutProvider';
 import { WorkOutType } from '@/types/workOut';
-import React from 'react';
+import React, { useContext } from 'react';
 
 
 const SaveLaterButton = ({ workOut }: { workOut: WorkOutType }) => {
+  const {savedPlan,setSavedPlan} = useContext(WorkOutContext)
     const handleSaveLaterButton = () => {
-        console.log("HandleSaveLaterButton Clicked", workOut);
+        setSavedPlan([...savedPlan,workOut])
     }
     return (
         <button
