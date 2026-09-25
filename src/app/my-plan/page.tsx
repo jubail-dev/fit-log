@@ -6,8 +6,13 @@ import Link from "next/link";
 import React, { useContext, useState } from "react";
 import TodayPlanCard from "../components/shared/TodayPlanCard";
 import SavePlanCard from "../components/shared/SavePlanCard";
+import { WorkOutType } from "@/types/workOut";
 
 const MyPlanPage = () => {
+  const [sortBy, setSortBy] = useState<
+    "duration" | "calories" | "rating"
+  >("duration");
+
   const { todayPlan, savedPlan } = useContext(WorkOutContext);
 
   const [activeTab, setActiveTab] = useState("saved");
@@ -23,6 +28,29 @@ const MyPlanPage = () => {
     (total, workOut) => total + workOut.caloriesBurned,
     0
   );
+
+  const sortWorkouts = (workOuts: WorkOutType[]) => {
+    const sortedWorkouts = [...workOuts];
+
+    if (sortBy === "duration") {
+      sortedWorkouts.sort((a, b) => b.duration - a.duration);
+    }
+
+    if (sortBy === "calories") {
+      sortedWorkouts.sort(
+        (a, b) => b.caloriesBurned - a.caloriesBurned
+      );
+    }
+
+    if (sortBy === "rating") {
+      sortedWorkouts.sort((a, b) => b.rating - a.rating);
+    }
+
+    return sortedWorkouts;
+  };
+
+  const sortedTodayPlan = sortWorkouts(todayPlan);
+  const sortedSavedPlan = sortWorkouts(savedPlan);
 
   return (
     <div className="bg-[#1E1E1E] py-24">
@@ -76,7 +104,7 @@ const MyPlanPage = () => {
             <div className="tab-content bg-slate-800 p-6 rounded-b-box text-white">
               {todayPlan.length > 0 ? (
                 <div>
-                  {todayPlan.map((workOut) => (
+                  {sortedTodayPlan.map((workOut) => (
                     <TodayPlanCard
                       key={workOut.id}
                       workOut={workOut}
@@ -114,7 +142,7 @@ const MyPlanPage = () => {
             <div className="tab-content bg-slate-800 p-6 rounded-b-box text-white">
               {savedPlan.length > 0 ? (
                 <div>
-                  {savedPlan.map((workOut) => (
+                  {sortedSavedPlan.map((workOut) => (
                     <SavePlanCard
                       key={workOut.id}
                       workOut={workOut}
@@ -140,14 +168,19 @@ const MyPlanPage = () => {
               )}
             </div>
 
-            <div>
-                <select className="absolute right-0 top-0 bg-[#14161d] text-white border border-gray-700 rounded-lg px-4 py-2 text-sm">
-              <option>Sort By</option>
-              <option>Duration</option>
-              <option>Calories</option>
-              <option>Rating</option>
+            <select
+              value={sortBy}
+              onChange={(e) =>
+                setSortBy(
+                  e.target.value as "duration" | "calories" | "rating"
+                )
+              }
+              className="absolute right-0 top-0 bg-[#14161d] text-white border border-gray-700 rounded-lg px-4 py-2 text-sm"
+            >
+              <option value="duration">Duration</option>
+              <option value="calories">Calories</option>
+              <option value="rating">Rating</option>
             </select>
-            </div>
           </div>
         </div>
       </div>
@@ -156,4 +189,3 @@ const MyPlanPage = () => {
 };
 
 export default MyPlanPage;
-
