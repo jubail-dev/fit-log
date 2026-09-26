@@ -6,10 +6,12 @@ import React, { useContext, useState } from "react";
 import NavLogo from "@/assets/logo.png";
 import Link from "next/link";
 import { WorkOutContext } from "@/context/WorkOutProvider";
+import { usePathname } from "next/navigation";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { todayPlan, savedPlan } = useContext(WorkOutContext);
+  const pathName = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,7 +19,7 @@ const Nav = () => {
 
   return (
     <header className="sticky top-0 z-50 shadow py-3 sm:py-4 bg-[#1E1E1E]">
-      <nav className="container mx-auto px-3 sm:px-4 lg:px-6 ">
+      <nav className="container mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between gap-3">
           {/* Left Side */}
           <div className="flex items-center gap-2 sm:gap-4 min-w-0">
@@ -79,11 +81,15 @@ const Nav = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex">
-            <ul className="flex gap-5 lg:gap-7 justify-center items-center text-base lg:text-xl text-[#9CA3AF]">
+            <ul className="flex gap-5 lg:gap-7 justify-center items-center text-base lg:text-xl">
               <li>
                 <Link
                   href="/"
-                  className="hover:text-white transition"
+                  className={`${
+                    pathName === "/"
+                      ? "text-[#c2f800]"
+                      : "text-[#9CA3AF] hover:text-white"
+                  } transition`}
                 >
                   Workouts
                 </Link>
@@ -92,7 +98,11 @@ const Nav = () => {
               <li>
                 <Link
                   href="/my-plan"
-                  className="hover:text-white transition"
+                  className={`${
+                    pathName === "/my-plan"
+                      ? "text-[#c2f800]"
+                      : "text-[#9CA3AF] hover:text-white"
+                  } transition`}
                 >
                   My Plan
                 </Link>
@@ -102,7 +112,6 @@ const Nav = () => {
 
           {/* Plan & Saved */}
           <div className="flex items-center gap-2 sm:gap-4 text-[#D1D5DB] text-sm sm:text-base lg:text-xl shrink-0">
-
             {/* Plan */}
             <Link
               href="/my-plan"
@@ -132,12 +141,16 @@ const Nav = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-800">
-            <ul className="flex flex-col gap-3 sm:gap-4 text-base sm:text-xl text-[#9CA3AF]">
+            <ul className="flex flex-col gap-3 sm:gap-4 text-base sm:text-xl">
               <li>
                 <Link
                   href="/"
                   onClick={() => setIsOpen(false)}
-                  className="block py-1 hover:text-white transition"
+                  className={`block py-1 ${
+                    pathName === "/"
+                      ? "text-[#c2f800]"
+                      : "text-[#9CA3AF] hover:text-white"
+                  } transition`}
                 >
                   Workouts
                 </Link>
@@ -147,7 +160,11 @@ const Nav = () => {
                 <Link
                   href="/my-plan"
                   onClick={() => setIsOpen(false)}
-                  className="block py-1 hover:text-white transition"
+                  className={`block py-1 ${
+                    pathName === "/my-plan"
+                      ? "text-[#c2f800]"
+                      : "text-[#9CA3AF] hover:text-white"
+                  } transition`}
                 >
                   My Plan
                 </Link>

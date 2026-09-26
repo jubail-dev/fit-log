@@ -140,7 +140,7 @@ fitlog/
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_LINK_HERE
+git clone https://github.com/jubail-dev/fit-log
 ```
 
 ### 2. Navigate to the project
