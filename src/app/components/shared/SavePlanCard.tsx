@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 import { FiCheck, FiClock, FiStar, FiX } from "react-icons/fi";
 import { IoFlameOutline } from "react-icons/io5";
 import { WorkOutContext } from "@/context/WorkOutProvider";
+import { Bounce, toast } from "react-toastify";
 interface TodaySaveCardProps {
   workOut: WorkOutType;
 }
@@ -14,6 +15,15 @@ const SavePlanCard = ({ workOut }: TodaySaveCardProps) => {
     const handleRemoveButton = () => {
         const updatedPlan = savedPlan.filter((item) => item.id !== workOut.id);
         setSavedPlan(updatedPlan);
+        toast.error(`${workOut.name} removed from today's plan!`, {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "light",
+      transition: Bounce,
+      icon: <FiX className="text-red-500 w-5 h-5" />
+    });
+        
+        
     }
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#14161d] text-white p-5 rounded-2xl border border-gray-800 hover:border-[#c2f800]/30 transition duration-300">

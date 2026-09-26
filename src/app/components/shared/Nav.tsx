@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import NavLogo from "@/assets/logo.png";
 import Link from "next/link";
+import { WorkOutContext } from "@/context/WorkOutProvider";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { todayPlan, savedPlan } = useContext(WorkOutContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -62,7 +64,7 @@ const Nav = () => {
             >
               <span>Plan</span>
               <span className="px-4 py-2 text-center text-[#000000] bg-[#c2f800] rounded-full">
-                0
+                {todayPlan.length}
               </span>
             </Link>
 
@@ -71,7 +73,7 @@ const Nav = () => {
               className="flex gap-4 justify-center items-center"
             >
               <span>Saved</span>
-              <span>0</span>
+              <span>{savedPlan.length}</span>
             </Link>
           </div>
         </div>
