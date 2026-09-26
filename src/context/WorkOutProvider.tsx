@@ -69,4 +69,3 @@ const WorkOutProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export default WorkOutProvider;
-

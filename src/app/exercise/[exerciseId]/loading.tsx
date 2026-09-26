@@ -24,7 +24,7 @@ export default function ExerciseDetailSkeleton() {
                 justify-center
               "
             >
-              {/* ইমেজ আইকন (যা নিশ্চিত করবে এটি ছবির জন্য স্কেলিটন) */}
+             
               <svg
                 className="w-16 h-16 sm:w-24 sm:h-24 text-white/20"
                 aria-hidden="true"

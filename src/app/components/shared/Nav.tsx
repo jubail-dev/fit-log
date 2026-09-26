@@ -16,8 +16,8 @@ const Nav = () => {
   };
 
   return (
-    <header className="shadow py-3 sm:py-4 bg-[#1E1E1E]">
-      <nav className="container mx-auto px-3 sm:px-4 lg:px-6">
+    <header className="sticky top-0 z-50 shadow py-3 sm:py-4 bg-[#1E1E1E]">
+      <nav className="container mx-auto px-3 sm:px-4 lg:px-6 ">
         <div className="flex items-center justify-between gap-3">
           {/* Left Side */}
           <div className="flex items-center gap-2 sm:gap-4 min-w-0">

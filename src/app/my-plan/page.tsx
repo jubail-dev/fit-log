@@ -3,15 +3,23 @@
 
 import { WorkOutContext } from "@/context/WorkOutProvider";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TodayPlanCard from "../components/shared/TodayPlanCard";
 import SavePlanCard from "../components/shared/SavePlanCard";
 import { WorkOutType } from "@/types/workOut";
+
 
 const MyPlanPage = () => {
   const [sortBy, setSortBy] = useState<
     "duration" | "calories" | "rating"
   >("duration");
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsClient(true);
+  }, []);
 
   const { todayPlan, savedPlan } = useContext(WorkOutContext);
 
@@ -51,10 +59,14 @@ const MyPlanPage = () => {
 
   const sortedTodayPlan = sortWorkouts(todayPlan);
   const sortedSavedPlan = sortWorkouts(savedPlan);
+  
+
+
+
 
   return (
     <div className="min-h-screen bg-[#1E1E1E] py-16 sm:py-20 lg:py-24">
-      <div className="flex flex-col gap-6 sm:gap-8">
+      {isClient ?<div className="flex flex-col gap-6 sm:gap-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
           <div className="flex flex-col">
             <h1 className="text-3xl sm:text-4xl font-bold text-white">
@@ -195,7 +207,7 @@ const MyPlanPage = () => {
             </select>
           </div>
         </div>
-      </div>
+      </div>: <p>Loading...</p>}
     </div>
   );
 };
