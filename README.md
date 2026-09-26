@@ -8,7 +8,7 @@ The project focuses on providing a clean user interface, responsive design, reus
 
 ## 🌐 Live Demo
 
-🔗 **Live Website:** [Add Your Live Link](https://fit-log-ten-ashen.vercel.app/)
+🔗 **Live Website:** [Visit Website](https://fit-log-ten-ashen.vercel.app/)
 
 ## 📂 GitHub Repository
 
