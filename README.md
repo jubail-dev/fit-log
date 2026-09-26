@@ -1,36 +1,245 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏋️ FitLog
 
-## Getting Started
+**FitLog** is a modern and responsive fitness web application built with **Next.js and React**. It allows users to explore different exercises, view exercise details, create workout plans, and save their favorite workouts for later.
 
-First, run the development server:
+The project focuses on providing a clean user interface, responsive design, reusable components, and a smooth user experience.
+
+---
+
+## 🌐 Live Demo
+
+🔗 **Live Website:** [Add Your Live Link](https://fit-log-ten-ashen.vercel.app/)
+
+## 📂 GitHub Repository
+
+🔗 **GitHub Repository:** [View Source Code](https://github.com/jubail-dev/fit-log)
+
+---
+
+## ✨ Features
+
+* 🏠 Modern and responsive home page
+* 💪 Browse different exercises
+* 📖 View detailed information about exercises
+* 📋 Create your own workout plan
+* 💾 Save exercises for later
+* 🗑️ Remove exercises from saved plans
+* 🔔 Toast notifications for user actions
+* 📱 Fully responsive design
+* 🧭 Responsive navigation bar
+* ⏳ Loading and skeleton UI
+* ❌ Custom 404 Not Found page
+* 🧩 Context API for workout state management
+* ♻️ Reusable React components
+* ⚡ Built with Next.js App Router
+
+---
+
+## 🛠️ Technologies
+
+| Technology           | Purpose                       |
+| -------------------- | ----------------------------- |
+| **Next.js**          | React framework               |
+| **React**            | UI development                |
+| **JavaScript / JSX** | Application logic             |
+| **Tailwind CSS**     | Styling and responsive design |
+| **React Icons**      | Icons                         |
+| **React Toastify**   | Toast notifications           |
+| **Context API**      | Global state management       |
+
+---
+
+## 📄 Pages
+
+### 🏠 Home
+
+The homepage introduces FitLog and provides users with quick access to workout and exercise-related features.
+
+### 💪 Exercises
+
+Users can explore different exercises and choose workouts according to their needs.
+
+### 📖 Exercise Details
+
+Each exercise has a dedicated details page where users can see more information about that particular workout.
+
+### 📋 My Plan
+
+Users can create and manage their personal workout plan from this page.
+
+### 💾 Saved Plan
+
+Users can keep their preferred exercises in their saved workout list and access them later.
+
+### ❌ Not Found
+
+A custom Not Found page is provided for invalid routes and unavailable pages.
+
+---
+
+## 🧠 State Management
+
+FitLog uses **React Context API** to manage workout-related data globally.
+
+The workout context handles:
+
+* Today's workout plan
+* Saved workout plan
+* Adding exercises
+* Removing exercises
+* Updating workout lists
+
+This allows different components and pages to access the workout state without passing props through multiple levels.
+
+---
+
+## 📁 Project Structure
+
+```text
+fitlog/
+│
+├── app/
+│   ├── page.jsx
+│   ├── exercises/
+│   │   └── [exerciseId]/
+│   ├── my-plan/
+│   ├── saved/
+│   ├── not-found.jsx
+│   └── ...
+│
+├── components/
+│   ├── Nav.jsx
+│   ├── Footer.jsx
+│   ├── Banner.jsx
+│   ├── WorkoutCard.jsx
+│   └── ...
+│
+├── context/
+│   └── WorkOutProvider.jsx
+│
+├── lib/
+│   └── workOuts.js
+│
+├── types/
+│   └── workOut.js
+│
+├── public/
+│   └── ...
+│
+├── assets/
+│   └── ...
+│
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_LINK_HERE
+```
+
+### 2. Navigate to the project
+
+```bash
+cd fitlog
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Now open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🏗️ Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+Create a production build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Start the production server:
 
-## Deploy on Vercel
+```bash
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📱 Responsive Design
+
+FitLog is designed to provide a consistent experience across:
+
+* 📱 Mobile devices
+* 📲 Tablets
+* 💻 Laptops
+* 🖥️ Desktop screens
+
+The layout uses responsive Tailwind CSS utilities to adapt the interface to different screen sizes.
+
+---
+
+## 🎨 UI Highlights
+
+The application includes:
+
+* Modern fitness-focused interface
+* Responsive navbar
+* Exercise cards
+* Workout planning interface
+* Responsive buttons and controls
+* Skeleton loading states
+* Custom error page
+* Toast notifications
+* Mobile navigation menu
+
+---
+
+## 🔮 Future Improvements
+
+The project can be extended with several additional features:
+
+* 🔐 User authentication
+* 👤 User profile
+* 📊 Workout progress tracking
+* 🔥 Calories tracking
+* 📈 Progress statistics
+* 🗓️ Workout history
+* 🗄️ Backend database
+* ☁️ Cloud data storage
+* 🤖 Personalized workout recommendations
+* 📊 Fitness dashboard
+
+
+## 👨‍💻 Developer
+
+### JR Jubail
+
+Frontend / Full Stack Web Development Learner
+
+Built with ❤️ using **Next.js, React, and Tailwind CSS**.
+
+---
+
+## 📜 License
+
+This project was created for educational purposes as part of a web development learning assignment.
