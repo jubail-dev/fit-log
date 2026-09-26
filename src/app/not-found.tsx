@@ -25,7 +25,7 @@ const NotFound = () => {
         {/* Description */}
         <p className="mx-auto mt-4 max-w-md text-sm sm:text-base leading-7 text-gray-400">
           Looks like this workout page took a rest day.
-          The page you're looking for doesn't exist or may have been moved.
+          The page you are looking for does not exist or may have been moved.
         </p>
 
         {/* Button */}
