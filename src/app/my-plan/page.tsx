@@ -53,38 +53,46 @@ const MyPlanPage = () => {
   const sortedSavedPlan = sortWorkouts(savedPlan);
 
   return (
-    <div className="bg-[#1E1E1E] py-24">
+    <div className="bg-[#1E1E1E] py-16 sm:py-20 lg:py-24">
       <div className="flex flex-col gap-4">
-        <div className="container mx-auto flex flex-col gap-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
           <div className="flex flex-col">
-            <h1 className="text-4xl font-bold text-white">MY PLAN</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-white">
+              MY PLAN
+            </h1>
 
-            <p className="text-[#8A92A0]">
+            <p className="text-sm sm:text-base text-[#8A92A0]">
               Cap of five lifts for today. Finish them, then load more.
             </p>
           </div>
 
           <div className="flex justify-between items-center gap-4">
-            <div className="flex flex-col gap-3">
-              <h3 className="text-[#8A92A0]">Exercise</h3>
+            <div className="flex flex-col gap-2 sm:gap-3">
+              <h3 className="text-xs sm:text-sm text-[#8A92A0]">
+                Exercise
+              </h3>
 
-              <span className="text-4xl text-[#c2f800]">
+              <span className="text-3xl sm:text-4xl text-[#c2f800]">
                 {activePlan.length}
               </span>
             </div>
 
             <div>
-              <h3 className="text-[#8A92A0]">Minutes</h3>
+              <h3 className="text-xs sm:text-sm text-[#8A92A0]">
+                Minutes
+              </h3>
 
-              <span className="text-white text-4xl">
+              <span className="text-3xl sm:text-4xl text-white">
                 {totalMinutes}
               </span>
             </div>
 
             <div>
-              <h3 className="text-[#8A92A0]">Calories</h3>
+              <h3 className="text-xs sm:text-sm text-[#8A92A0]">
+                Calories
+              </h3>
 
-              <span className="text-white text-4xl">
+              <span className="text-3xl sm:text-4xl text-white">
                 {totalCalories}
               </span>
             </div>
@@ -92,18 +100,18 @@ const MyPlanPage = () => {
         </div>
 
         <div>
-          <div className="tabs tabs-border container mx-auto relative">
+          <div className="tabs tabs-border container mx-auto px-4 sm:px-6 lg:px-8 relative">
             <input
               type="radio"
               name="my_tabs_2"
-              className="tab text-white"
+              className="tab text-white text-sm sm:text-base"
               aria-label="Today's Plan"
               onChange={() => setActiveTab("today")}
             />
 
-            <div className="tab-content bg-slate-800 p-6 rounded-b-box text-white">
+            <div className="tab-content bg-slate-800 p-3 sm:p-5 lg:p-6 rounded-b-box text-white">
               {todayPlan.length > 0 ? (
-                <div>
+                <div className="flex flex-col gap-3 sm:gap-4">
                   {sortedTodayPlan.map((workOut) => (
                     <TodayPlanCard
                       key={workOut.id}
@@ -112,12 +120,12 @@ const MyPlanPage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="py-20 text-center space-y-3">
-                  <h1 className="text-3xl font-bold text-white">
+                <div className="py-16 sm:py-20 text-center space-y-3 px-4">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-white">
                     Nothing here yet
                   </h1>
 
-                  <p className="text-[#A1A1AA]">
+                  <p className="text-sm sm:text-base text-[#A1A1AA]">
                     Browse the library and add a lift to get today moving.
                   </p>
 
@@ -133,15 +141,15 @@ const MyPlanPage = () => {
             <input
               type="radio"
               name="my_tabs_2"
-              className="tab text-white"
+              className="tab text-white text-sm sm:text-base"
               aria-label="Saved"
               defaultChecked
               onChange={() => setActiveTab("saved")}
             />
 
-            <div className="tab-content bg-slate-800 p-6 rounded-b-box text-white">
+            <div className="tab-content bg-slate-800 p-3 sm:p-5 lg:p-6 rounded-b-box text-white">
               {savedPlan.length > 0 ? (
-                <div>
+                <div className="flex flex-col gap-3 sm:gap-4">
                   {sortedSavedPlan.map((workOut) => (
                     <SavePlanCard
                       key={workOut.id}
@@ -150,12 +158,12 @@ const MyPlanPage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="py-20 text-center space-y-3">
-                  <h1 className="text-3xl font-bold text-white">
+                <div className="py-16 sm:py-20 text-center space-y-3 px-4">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-white">
                     Nothing here yet
                   </h1>
 
-                  <p className="text-[#A1A1AA]">
+                  <p className="text-sm sm:text-base text-[#A1A1AA]">
                     Browse the library and add a lift to get today moving.
                   </p>
 
@@ -175,7 +183,7 @@ const MyPlanPage = () => {
                   e.target.value as "duration" | "calories" | "rating"
                 )
               }
-              className="absolute right-0 top-0 bg-[#14161d] text-white border border-gray-700 rounded-lg px-4 py-2 text-sm"
+              className="absolute right-0 top-0 bg-[#14161d] text-white border border-gray-700 rounded-lg px-2 sm:px-4 py-2 text-xs sm:text-sm max-w-[120px] sm:max-w-none"
             >
               <option value="duration">Duration</option>
               <option value="calories">Calories</option>
