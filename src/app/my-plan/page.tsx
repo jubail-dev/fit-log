@@ -23,7 +23,7 @@ const MyPlanPage = () => {
 
   const { todayPlan, savedPlan } = useContext(WorkOutContext);
 
-  const [activeTab, setActiveTab] = useState("saved");
+  const [activeTab, setActiveTab] = useState("today");
 
   const activePlan = activeTab === "today" ? todayPlan : savedPlan;
 
@@ -119,6 +119,7 @@ const MyPlanPage = () => {
                 name="my_tabs_2"
                 className="tab text-white text-sm sm:text-base"
                 aria-label="Today's Plan"
+                defaultChecked
                 onChange={() => setActiveTab("today")}
               />
 
@@ -157,7 +158,6 @@ const MyPlanPage = () => {
                 name="my_tabs_2"
                 className="tab text-white text-sm sm:text-base"
                 aria-label="Saved"
-                defaultChecked
                 onChange={() => setActiveTab("saved")}
               />
 

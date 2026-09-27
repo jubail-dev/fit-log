@@ -1,4 +1,3 @@
-
 "use client";
 
 import { WorkOutContext } from "@/context/WorkOutProvider";
@@ -10,39 +9,68 @@ const TodayPlanButton = ({ workOut }: { workOut: WorkOutType }) => {
   const { todayPlan, setTodayPlan } = useContext(WorkOutContext);
 
   const handleTodayPlanButton = () => {
+    // Check if the exercise is already added
     const alreadyAdded = todayPlan.some(
       (item) => item.id === workOut.id
     );
 
     if (alreadyAdded) {
-      toast.error(`${workOut.name} is already in added`, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
+      toast.error(
+        `${workOut.name} is already added to today's plan.`,
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
 
       return;
     }
 
+    // Check maximum 5 exercises
+    if (todayPlan.length >= 5) {
+      toast.error(
+        "You can only add 5 exercises to today's plan.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
+
+      return;
+    }
+
+    // Add exercise to today's plan
     setTodayPlan([...todayPlan, workOut]);
 
-    toast.success(`${workOut.name} added to today's plan!`, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
+    // Success message
+    toast.success(
+      `${workOut.name} added to today's plan!`,
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      }
+    );
   };
 
   return (
@@ -67,4 +95,3 @@ const TodayPlanButton = ({ workOut }: { workOut: WorkOutType }) => {
 };
 
 export default TodayPlanButton;
-
